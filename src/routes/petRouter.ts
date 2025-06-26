@@ -4,9 +4,11 @@ import PetController from '../controller/PetController';
 const router = express.Router();
 
 const petController = new PetController();
-const t = () => {
-  const k = [1, 2, 3];
-};
 router.post('/', petController.criaPet);
+router.get('/', (req, res) => {
+  petController.listaPets(req, res);
+});
+router.put('/:id', petController.atualizaPet);
+router.delete('/:id', petController.deletaPet);
 
 export default router;
